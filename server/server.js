@@ -2,8 +2,8 @@ const express = require('express');
 const mysql = require('mysql');
 const cors =require('cors');
 const app = express();
-app.use(express.urlencoded({extended:true}))
-app.use(express.json())
+app.use(express.urlencoded({extended:true}));
+app.use(express.json());
 app.use(cors());
 
 
@@ -24,9 +24,9 @@ app.post('/signup', (req, res) =>{
 
     db.query(sql, [values], (err, data) =>{
         if(err) {
-            return res.json("Error")
+            return res.json("Error");
         }
-        return res.json(data)
+        return res.json(data);
     })
 })
 app.post('/login', (req, res) =>{
@@ -34,12 +34,12 @@ app.post('/login', (req, res) =>{
 
     db.query(sql, [req.body.email, req.body.password], (err, data) =>{
         if(err) {
-            return res.json("Error")
+            return res.json("Error");
         }
         if(data.length > 0){
-            return res.json('success')
+            return res.json('success');
         } else{
-            return res.json('failed')
+            return res.json('failed');
         }
     })
 })
